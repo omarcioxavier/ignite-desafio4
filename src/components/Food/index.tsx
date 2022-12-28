@@ -3,24 +3,24 @@ import { Container } from './styles';
 
 interface FoodItemProps {
   foodItem: {
-    id: number;
-    link: string;
-    title: string;
-    price: number;
-    description: string;
-    isAvailable: boolean;
+    id: number,
+    name: string,
+    description: string,
+    price: number,
+    available: boolean,
+    image: string
   },
   onOpenModalEditFood: () => void;
 }
 
 export function Food(props: FoodItemProps) {
   return (
-    <Container available={props.foodItem.isAvailable}>
+    <Container available={props.foodItem.available}>
       <header>
-        <img src={props.foodItem.link} alt={props.foodItem.title} />
+        <img src={props.foodItem.image} alt={props.foodItem.name} />
       </header>
       <section className="body">
-        <h2>{props.foodItem.title}</h2>
+        <h2>{props.foodItem.name}</h2>
         <p>{props.foodItem.description}</p>
         <p className="price">
           R$ <b>{props.foodItem.price}</b>
@@ -48,13 +48,13 @@ export function Food(props: FoodItemProps) {
         </div>
 
         <div className="availability-container">
-          <p>{props.foodItem.isAvailable ? 'Disponível' : 'Indisponível'}</p>
+          <p>{props.foodItem.available ? 'Disponível' : 'Indisponível'}</p>
 
           <label htmlFor={`available-switch-${props.foodItem.id}`} className="switch">
             <input
               id={`available-switch-${props.foodItem.id}`}
               type="checkbox"
-              checked={props.foodItem.isAvailable}
+              checked={props.foodItem.available}
               onChange={undefined}
               data-testid={`change-status-food-${props.foodItem.id}`}
             />

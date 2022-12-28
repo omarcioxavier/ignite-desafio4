@@ -1,8 +1,8 @@
 export interface Food {
     id: number,
-    link: string,
-    title: string,
-    price: number,
+    name: string,
     description: string,
-    isAvailable: boolean
+    price: number,
+    available: boolean
+    image: string
 }

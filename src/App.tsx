@@ -5,6 +5,7 @@ import { Header } from './components/Header';
 import { useState } from 'react';
 import { ModalEditFood } from './components/ModalEditFood';
 import { ModalAddFood } from './components/ModalAddFood';
+import { Dashboard } from './pages/Dashboard';
 
 Modal.setAppElement("#root");
 
@@ -30,7 +31,7 @@ export function App() {
   return (
     <FoodsProvider>
       <Header onOpenModalAddFood={handleModalAddFoodOpen} />
-      {/* <Dashboard onOpenModalEditFood={handleModalEditFoodOpen} /> */}
+      <Dashboard onOpenModalEditFood={handleModalEditFoodOpen} />
       <ModalAddFood isOpen={modalAddFoodOpen} onRequestClose={handleModalAddFoodClose} />
       <ModalEditFood isOpen={modalEditFoodOpen} onRequestClose={handleModalEditFoodClose} />
 

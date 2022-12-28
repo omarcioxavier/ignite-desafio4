@@ -29,24 +29,24 @@ interface FoodsContextData {
 
 export const FoodsContext = createContext<FoodsContextData>({} as FoodsContextData);
 
-export function FoodsProvider({ children }: FoodsProviderProps) {
+export function FoodsProvider({ children }: FoodsProviderProps): JSX.Element {
     const [foods, setFoods] = useState<Food[]>([]);
-
-    useEffect(() => {
-        api.get('foods')
-            .then(response => setFoods(response.data.foods))
-    }, []);
+    // useEffect(() => {
+    //     api.get("/foods")
+    //         .then(response => setFoods(response.data.foods))
+    //         .then(response => console.log(response))
+    // }, []);
 
     async function createFood(data: FoodInsert) {
         const response = await api.post("/foods", { ...data });
         const { food } = response.data;
-        setFoods([...foods, food]);
+        //setFoods([...foods, food]);
     }
 
     async function updateFood(data: FoodUpdate) {
         const response = await api.put(`/foods/${data.id}`, { ...data });
         const { food } = response.data;
-        setFoods([...foods, food]);
+        //setFoods([...foods, food]);
     }
 
     return (
@@ -56,6 +56,6 @@ export function FoodsProvider({ children }: FoodsProviderProps) {
     );
 }
 
-export function useFoods() {
+export function useFoods(): FoodsContextData {
     return useContext(FoodsContext);
 }
